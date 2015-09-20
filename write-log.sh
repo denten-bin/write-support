@@ -3,7 +3,7 @@
 # on a given day. Expects a directory.
 
 # initialize
-path="$src"code/progress
+path="$src"logs/
 toDate=$(date +"%Y%m%d")
 
 # pass in the directory, complain and exit if none
