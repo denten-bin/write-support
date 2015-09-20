@@ -16,6 +16,8 @@ fi
 
 source=$2
 
+echo $2
+
 # Use parameter expansion to strip the name
 target="${source%%.*}"
 
