@@ -27,13 +27,18 @@ while getopts ":d:p:m:" opt; do
   case $opt in
     d)
       echo "printing $target.docx to print-plates/" >&2
-      pandoc --filter pandoc-citeproc --csl pass-ins/csl/mla-note.csl -So \
-          print-plates/"$target".docx "$source"
+      pandoc -s "$source" pass-ins/metadata.yaml \
+          --filter pandoc-citeproc \
+          --csl pass-ins/csl/mla-note.csl \
+          -S -o print-plates/"$target".docx
       ;;
     p)
       echo "printing $target.pdf to print-plates/" >&2
-      pandoc --latex-engine=xelatex --filter pandoc-citeproc --csl \
-          pass-ins/csl/mla-no-biblio.csl -So print-plates/"$target".pdf "$source"
+      pandoc -s "$source" pass-ins/metadata.yaml \
+          --latex-engine=xelatex \
+          --filter pandoc-citeproc \
+          --csl pass-ins/csl/mla-no-biblio.csl \
+          -S -o print-plates/"$target".pdf
       ;;
     m)
       echo "printing $target.md to print-plates/" >&2
