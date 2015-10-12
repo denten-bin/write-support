@@ -30,7 +30,7 @@ while getopts ":d:p:m:" opt; do
       pandoc -s "$source" pass-ins/metadata.yaml \
           --filter pandoc-citeproc \
           --csl pass-ins/csl/mla-note.csl \
-          -S -o print-plates/"$target".docx
+          -So print-plates/"$target".docx
       ;;
     p)
       echo "printing $target.pdf to print-plates/" >&2
@@ -38,12 +38,14 @@ while getopts ":d:p:m:" opt; do
           --latex-engine=xelatex \
           --filter pandoc-citeproc \
           --csl pass-ins/csl/mla-no-biblio.csl \
-          -S -o print-plates/"$target".pdf
+          -So print-plates/"$target".pdf
       ;;
     m)
       echo "printing $target.md to print-plates/" >&2
-      pandoc "$source" -f markdown -t markdown+hard_line_breaks -So \
-          print-plates/"$target".md
+      pandoc "$source" \
+          -f markdown \
+          -t markdown+hard_line_breaks \
+          -So print-plates/"$target".md
       ;;
     \?)
       echo "Invalid option: -$OPTARG" >&2
