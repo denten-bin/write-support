@@ -41,7 +41,7 @@ then
     echo "You lost nothing. You gained nothing. $newToday today for a total of $newTotal"
 elif [ "$newToday" -gt 0 ]
 then
-    echo "You wrote $newToday since yesterday, for a total of $newTotal."
+    echo "You wrote $newToday words since yesterday, for a total of $newTotal."
 elif [ "$newToday" -lt 0 ]
 then
     echo "You made your argument $newToday sharper since yesterday. Your total now is $newTotal. "

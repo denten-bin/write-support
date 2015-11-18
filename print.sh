@@ -28,6 +28,7 @@ while getopts ":d:p:m:" opt; do
     d)
       echo "printing $target.docx to print-plates/" >&2
       pandoc -s "$source" pass-ins/metadata.yaml \
+          --verbose \
           --filter pandoc-citeproc \
           --csl pass-ins/csl/mla-note.csl \
           -So print-plates/"$target".docx
@@ -35,6 +36,7 @@ while getopts ":d:p:m:" opt; do
     p)
       echo "printing $target.pdf to print-plates/" >&2
       pandoc -s "$source" pass-ins/metadata.yaml \
+          --verbose \
           --latex-engine=xelatex \
           --filter pandoc-citeproc \
           --csl pass-ins/csl/mla-no-biblio.csl \
