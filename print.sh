@@ -30,7 +30,7 @@ while getopts ":d:p:m:" opt; do
       pandoc -s "$source" pass-ins/metadata.yaml \
           --verbose \
           --filter pandoc-citeproc \
-          --csl pass-ins/csl/mla-note.csl \
+          --csl ~/bin/write-support/csl/mla-note.csl \
           -So print-plates/"$target".docx
       ;;
     p)
@@ -39,7 +39,7 @@ while getopts ":d:p:m:" opt; do
           --verbose \
           --latex-engine=xelatex \
           --filter pandoc-citeproc \
-          --csl pass-ins/csl/mla-no-biblio.csl \
+          --csl ~/bin/write-support/csl/mla-no-biblio.csl \
           -So print-plates/"$target".pdf
       ;;
     m)
