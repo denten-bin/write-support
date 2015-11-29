@@ -1,11 +1,15 @@
 #!/bin/bash
-# This script saves time when constructing complex pandoc incantations
+#
+# Save time when constructing complex pandoc incantations.
 #
 # USUAGE:
-#           sh print.sh [-p | -d] filename.md
+#           sh print.sh [-p|-d|-m] filename.md
 #
 #           -p to produce .pdf
 #           -d for .docx
+#           -m for .md hardwrap > .md softwrap with normalization
+#
+# this last one is useful for sharing and 
 
 ## pass the file name as an argument
 if [ $# -eq 0 ]
@@ -29,13 +33,12 @@ else
     yaml="--verbose"
 fi
 
-# handle three options with getopts: -d for .docx, -p for .pdf
-# -m to softwrap hardwraps and normalize markdown
+# handle three options with getopts
 while getopts ":d:p:m:" opt; do
   case $opt in
     d)
       echo "printing $source to print-plates/$target.docx " >&2
-      pandoc -s "$yaml" "$source" \
+      pandoc "$yaml" "$source" \
           --smart \
           --normalize \
           --standalone \
@@ -44,9 +47,8 @@ while getopts ":d:p:m:" opt; do
       ;;
     p)
       echo "printing $source to print-plates/$target.pdf " >&2
-      pandoc -s "$yaml" "$source" \
+      pandoc "$yaml" "$source" \
           --smart \
-          --verbose \
           --normalize \
           --standalone \
           --latex-engine=xelatex \
@@ -56,11 +58,12 @@ while getopts ":d:p:m:" opt; do
     m)
       echo "printing $target.md to print-plates/" >&2
       pandoc "$source" \
+          --smart \
           --normalize \
           --standalone \
           -f markdown \
           -t markdown+hard_line_breaks \
-          -So print-plates/"$target".md
+          -o print-plates/"$target".md
       ;;
     \?)
       echo "Invalid option: -$OPTARG" >&2
