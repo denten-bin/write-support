@@ -33,6 +33,7 @@ else
     yaml="--verbose"
 fi
 
+# todo: add --reference-docx for -d
 # handle three options with getopts
 while getopts ":d:p:m:" opt; do
   case $opt in
