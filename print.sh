@@ -35,28 +35,29 @@ while getopts ":d:p:m:" opt; do
   case $opt in
     d)
       echo "printing $source to print-plates/$target.docx " >&2
-      pandoc -s "$source" "$yaml" \
-          --verbose \
+      pandoc -s "$yaml" "$source" \
+          --smart \
           --normalize \
+          --standalone \
           --filter pandoc-citeproc \
-          --csl ~/bin/write-support/csl/mla-note.csl \
-          -So print-plates/"$target".docx
+          -o print-plates/"$target".docx
       ;;
     p)
       echo "printing $source to print-plates/$target.pdf " >&2
-      pandoc -s "$source" "$yaml" \
+      pandoc -s "$yaml" "$source" \
+          --smart \
           --verbose \
           --normalize \
+          --standalone \
           --latex-engine=xelatex \
           --filter pandoc-citeproc \
-          --csl ~/bin/write-support/csl/mla-no-biblio.csl \
-          -So print-plates/"$target".pdf
+          -o print-plates/"$target".pdf
       ;;
     m)
       echo "printing $target.md to print-plates/" >&2
       pandoc "$source" \
-          --verbose \
           --normalize \
+          --standalone \
           -f markdown \
           -t markdown+hard_line_breaks \
           -So print-plates/"$target".md
