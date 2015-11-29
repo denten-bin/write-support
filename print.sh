@@ -29,8 +29,8 @@ else
     yaml="--verbose"
 fi
 
-# handle two options with getopts: -d for .docx and -p for .pdf
-
+# handle three options with getopts: -d for .docx, -p for .pdf
+# -m to softwrap hardwraps and normalize markdown
 while getopts ":d:p:m:" opt; do
   case $opt in
     d)
