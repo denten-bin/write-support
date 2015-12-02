@@ -1,0 +1,54 @@
+---
+# Personal details
+name: Friedrich Nietzsche
+address:
+- Humboldtstraße 36
+- 99425 Weimar
+- Prussia
+phone: "+49 03643 545400"
+email: friedrich@thevoid.de
+# Insert URLs without http://
+urls:
+- wki.pe/friedrich_nietzsche
+- twitter.com/tinynietzsche
+
+# Sections
+
+intro: "I know my fate. One day my name will be associated with the memory of something tremendous --- a crisis without equal on earth, the most profound collision of conscience, a decision that was conjured up against everything that had been believed, demanded, hallowed so far. I am no man, I am dynamite."
+
+skills:
+- Aesthetics, Ethics, Metaphysics, Nihilism
+- Psychology, Ontology, Poetry, Value theory
+- Voluntarism, Tragedy, Fact–value distinction
+- Anti-foundationalism, Philosophy of history
+
+experience:
+- years: 1879--1889
+  employer: Freiberufler
+  job: Freier Philisoph
+  city: Sils-Maria
+- years: 1869–-1879
+  employer: Universität Basel
+  job: Professor für klassische Philologie
+  city: Basel
+- years: 1867--1868
+  employer: Preußischen Artillerie
+  job: Kanonier
+  city: Naumburg
+
+education:
+- year: 1867
+  subject: Philology
+  institute: Leipzig Universität
+  city: Leipzig
+- year: 1864
+  subject: Abitur
+  institute: Schulpforta
+  city: Naumburg
+
+# Settings
+mainfont: Hoefler Text
+fontsize: 10pt
+lang: English
+geometry: a4paper, left=35mm, right=35mm, top=51mm, bottom=17mm
+---
