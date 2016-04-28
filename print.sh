@@ -8,6 +8,7 @@
 #           -p to produce .pdf
 #           -d for .docx
 #           -m for .md hardwrap > .md softwrap with normalization
+#           -y for pdfs without standalone yaml
 #
 # this last one is useful for sharing and 
 
@@ -35,7 +36,7 @@ fi
 
 # todo: add --reference-docx for -d
 # handle three options with getopts
-while getopts ":d:p:m:" opt; do
+while getopts ":d:p:m:y:" opt; do
   case $opt in
     d)
       echo "printing $source to print-plates/$target.docx " >&2
@@ -65,6 +66,16 @@ while getopts ":d:p:m:" opt; do
           -f markdown \
           -t markdown+hard_line_breaks \
           -o print-plates/"$target".md
+      ;;
+    y)
+      echo "printing $source to print-plates/$target.pdf " >&2
+      pandoc "$source" \
+          --smart \
+          --normalize \
+          --standalone \
+          --latex-engine=xelatex \
+          --filter pandoc-citeproc \
+          -o print-plates/"$target".pdf
       ;;
     \?)
       echo "Invalid option: -$OPTARG" >&2

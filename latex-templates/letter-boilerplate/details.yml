@@ -12,8 +12,8 @@ to:
 - 13597 Spandau
 
 # Settings
-mainfont: Hoefler Text
-altfont: Helvetica Neue
+mainfont: fbb
+altfont: Cabin
 monofont: Courier
 lang: english
 fontsize: 10pt
