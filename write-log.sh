@@ -1,19 +1,10 @@
 #!/bin/bash
 # This script counts the words of all the markdown files in a given directory
-# on a given day. Expects a directory.
+# on a given day. Should run from the directory invoked.
 
 # initialize
 path="$src"logs/
 toDate=$(date +"%Y%m%d")
-
-# pass in the directory, complain and exit if none
-if [ $# -eq 0 ]
-then
-        echo "pass the file name"
-        exit
-fi
-
-src=$2
 
 # grab the last date
 lastDate=$(tail -1 $path/log.txt | cut -f 3 -d ' ')
