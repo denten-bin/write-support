@@ -346,40 +346,6 @@
     <text variable="collection-title"/>
     <text variable="collection-number" prefix=" "/>
   </macro>
-  <macro name="edition-note">
-    <choose>
-      <if type="bill book chapter graphic legal_case legislation motion_picture paper-conference report song" match="any">
-        <choose>
-          <if is-numeric="edition">
-            <group delimiter=" ">
-              <number variable="edition" form="ordinal"/>
-              <text term="edition" form="short"/>
-            </group>
-          </if>
-          <else>
-            <text variable="edition" suffix="."/>
-          </else>
-        </choose>
-      </if>
-    </choose>
-  </macro>
-  <macro name="edition">
-    <choose>
-      <if type="bill book chapter graphic legal_case legislation motion_picture paper-conference report song" match="any">
-        <choose>
-          <if is-numeric="edition">
-            <group delimiter=" ">
-              <number variable="edition" form="ordinal"/>
-              <text term="edition" form="short"/>
-            </group>
-          </if>
-          <else>
-            <text variable="edition" text-case="capitalize-first" suffix="."/>
-          </else>
-        </choose>
-      </if>
-    </choose>
-  </macro>
   <macro name="locators-note">
     <choose>
       <if type="article-journal">
@@ -407,7 +373,6 @@
               </group>
             </if>
           </choose>
-          <text macro="edition-note"/>
         </group>
       </else-if>
     </choose>
@@ -434,7 +399,6 @@
           <group>
             <text term="volume" form="short" prefix=" " plural="true"/>
           </group>
-          <text macro="edition"/>
         </group>
       </else-if>
       <else-if type="chapter paper-conference" match="any">
@@ -447,7 +411,6 @@
               </group>
             </if>
           </choose>
-          <text macro="edition"/>
         </group>
       </else-if>
     </choose>
@@ -457,8 +420,6 @@
       <if type="article-newspaper">
         <group delimiter=", ">
           <group delimiter=" ">
-            <text variable="edition"/>
-            <text term="edition" form="short"/>
           </group>
           <group>
             <text term="section" form="short" suffix=" "/>
