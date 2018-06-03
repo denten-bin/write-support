@@ -48,7 +48,6 @@ while getopts ":d:p:m:y:" opt; do
     p)
       echo "printing $source to print-plates/$target.pdf " >&2
       pandoc "$yaml" "$source" \
-          --template=default.latex \
           --pdf-engine=xelatex \
           --filter pandoc-citeproc \
           -o print-plates/"$target".pdf
