@@ -41,8 +41,6 @@ while getopts ":d:p:m:y:" opt; do
     d)
       echo "printing $source to print-plates/$target.docx " >&2
       pandoc "$yaml" "$source" \
-          --smart \
-          --normalize \
           --standalone \
           --filter pandoc-citeproc \
           -o print-plates/"$target".docx
@@ -50,18 +48,14 @@ while getopts ":d:p:m:y:" opt; do
     p)
       echo "printing $source to print-plates/$target.pdf " >&2
       pandoc "$yaml" "$source" \
-          --smart \
-          --normalize \
-          --standalone \
-          --latex-engine=xelatex \
+          --template=default.latex \
+          --pdf-engine=xelatex \
           --filter pandoc-citeproc \
           -o print-plates/"$target".pdf
       ;;
     m)
       echo "printing $target.md to print-plates/" >&2
       pandoc "$source" \
-          --smart \
-          --normalize \
           --standalone \
           -f markdown \
           -t markdown+hard_line_breaks \
@@ -70,8 +64,7 @@ while getopts ":d:p:m:y:" opt; do
     y)
       echo "printing $source to print-plates/$target.pdf " >&2
       pandoc "$source" \
-          --smart \
-          --normalize \
+          +smart \
           --standalone \
           --latex-engine=xelatex \
           --filter pandoc-citeproc \
