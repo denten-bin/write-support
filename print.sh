@@ -56,9 +56,8 @@ while getopts ":d:p:m:y:" opt; do
       echo "printing $target.md to print-plates/" >&2
       pandoc "$source" \
           --standalone \
-          -f markdown \
-          -t markdown+hard_line_breaks \
-          -o print-plates/"$target".md
+          --filter pandoc-citeproc \
+          -o print-plates/"$target"-xp.txt
       ;;
     y)
       echo "printing $source to print-plates/$target.pdf " >&2
